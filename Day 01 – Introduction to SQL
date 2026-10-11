@@ -1,0 +1,86 @@
+What is SQL?
+
+SQL stands for Structured Query Language. It is used to communicate with relational databases to store, retrieve, insert, update, and delete data.
+
+What is a Database?
+
+A database is an organized collection of data that can be stored, accessed, and managed easily.
+
+What is DBMS?
+
+DBMS stands for Database Management System. It is software used to create, store, retrieve, and manage data in a database.
+
+What is RDBMS?
+
+RDBMS stands for Relational Database Management System. It stores data in tables consisting of rows and columns. It also supports relationships between tables.
+
+Examples: MySQL, PostgreSQL, Oracle.
+
+What is a Table?
+
+A table is a collection of related data organized into rows and columns.
+
+What is a Row?
+
+A row represents a single record in a table. For example, one student's complete details form one row.
+
+What is a Column?
+
+A column represents a specific attribute of the data, such as student name, department, or mark.
+
+Basic SQL Commands
+
+1. CREATE DATABASE
+
+The CREATE DATABASE command is used to create a new database.
+
+CREATE DATABASE sql_practice;
+
+2. USE
+
+The USE command selects the database in which we want to work in MySQL.
+
+USE sql_practice;
+
+3. CREATE TABLE
+
+The CREATE TABLE command is used to create a new table with specified columns and data types.
+
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50),
+    mark INT
+);
+
+4. INSERT INTO
+
+The INSERT INTO command is used to add new records to a table.
+
+INSERT INTO Students (id, name, department, mark)
+VALUES
+(1, 'Arun', 'CSE', 85),
+(2, 'Priya', 'IT', 90),
+(3, 'Kavin', 'ECE', 78),
+(4, 'Divya', 'CSE', 88),
+(5, 'Ravi', 'IT', 82);
+
+5. SELECT
+
+The SELECT command is used to retrieve data from a table.
+
+To display all columns and records:
+
+SELECT * FROM Students;
+
+To display only student names:
+
+SELECT name FROM Students;
+
+To display student names and marks:
+
+SELECT name, mark FROM Students;
+
+Summary
+
+Today, I learned the fundamentals of SQL, databases, DBMS, RDBMS, tables, rows, and columns. I also learned how to create a database, create a table, insert records, and retrieve data using the SELECT statement.
