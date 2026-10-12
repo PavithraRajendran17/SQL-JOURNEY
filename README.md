@@ -34,7 +34,7 @@ This repository documents my daily progress in learning SQL, understanding datab
 | Day | Topic | Status |
 |:---:|:---|:---:|
 | 01 | Introduction to SQL | ✅ Completed |
-| 02 | SQL Data Types | ⏳ Upcoming |
+| 02 | SQL Data Types | ✅ Completed |
 | 03 | SQL Constraints | ⏳ Upcoming |
 | 04 | Filtering Data | ⏳ Upcoming |
 | 05 | Sorting and Grouping | ⏳ Upcoming |
