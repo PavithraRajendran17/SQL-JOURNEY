@@ -1,0 +1,235 @@
+# 🌸✨ SQL DAILY LEARNING JOURNEY ✨🌸
+
+## 💖 Day 02 — SQL Data Types 💖
+
+📅 **Date:** 12 October 2026  
+🎯 **Goal:** Understand SQL Data Types  
+💻 **Focus:** Numeric, String, Date & Time Data Types
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🌟 1. 💡 What are SQL Data Types?
+
+🔹 **SQL Data Types** define the type of data that a column can store in a database table.
+
+📖 They help specify whether a column stores numbers, text, dates, or other values.
+
+💡 **Example:** A student's name stores text, while their mark stores a number. 🎓
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🌟 2. 🔢 Numeric Data Types
+
+🔹 Numeric data types are used to store numbers.
+
+### 🟢 INT
+
+📖 **Definition:** `INT` is used to store whole numbers without decimal values.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT,
+    age INT,
+    mark INT
+);
+```
+
+🎯 **Purpose:** Stores values such as `101`, `20`, and `85`.
+
+### 🟢 DECIMAL
+
+📖 **Definition:** `DECIMAL` is used to store numbers with a fixed number of decimal places.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Products (
+    product_id INT,
+    price DECIMAL(10,2)
+);
+```
+
+🎯 **Purpose:** Stores values such as `199.99` and `1500.50`. 💰
+
+🧠 **Remember:**
+- `INT` → Whole numbers 🔢
+- `DECIMAL` → Numbers with decimal places 💵
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🌟 3. 🔤 String Data Types
+
+🔹 String data types are used to store text and character values.
+
+### 🟢 CHAR
+
+📖 **Definition:** `CHAR` stores fixed-length character strings.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    gender CHAR(1)
+);
+```
+
+🎯 **Purpose:** Can store a single character such as `'M'` or `'F'`.
+
+### 🟢 VARCHAR
+
+📖 **Definition:** `VARCHAR` stores variable-length character strings up to a specified maximum length.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    name VARCHAR(50),
+    department VARCHAR(20)
+);
+```
+
+🎯 **Purpose:** Stores names such as `'Pavithra'` and department names such as `'CSE'`.
+
+🧠 **Difference:**
+
+- `CHAR(10)` → Fixed-length string of 10 characters.
+- `VARCHAR(10)` → Variable-length string with a maximum of 10 characters.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🌟 4. 📅 Date and Time Data Types
+
+🔹 These data types are used to store dates and time-related values.
+
+### 🟢 DATE
+
+📖 **Definition:** `DATE` stores a date in `YYYY-MM-DD` format.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    admission_date DATE
+);
+```
+
+🎯 **Example Value:** `'2026-06-15'` 📆
+
+### 🟢 TIME
+
+📖 **Definition:** `TIME` stores a time value.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Schedule (
+    class_time TIME
+);
+```
+
+🎯 **Example Value:** `'09:30:00'` ⏰
+
+### 🟢 DATETIME
+
+📖 **Definition:** `DATETIME` stores both date and time.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Events (
+    event_time DATETIME
+);
+```
+
+🎯 **Example Value:** `'2026-10-12 10:30:00'` 🗓️
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🌟 5. 📋 Common SQL Data Types Summary
+
+| Data Type | Purpose | Example |
+|:---|:---|:---|
+| `INT` | Whole numbers | `100` |
+| `DECIMAL(10,2)` | Decimal numbers | `99.50` |
+| `CHAR(1)` | Fixed-length text | `'A'` |
+| `VARCHAR(50)` | Variable-length text | `'Pavithra'` |
+| `DATE` | Date values | `'2026-10-12'` |
+| `TIME` | Time values | `'10:30:00'` |
+| `DATETIME` | Date and time | `'2026-10-12 10:30:00'` |
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 💻🔥 PRACTICAL SQL EXAMPLE 🔥💻
+
+## 🟢 6. Create a Student Details Table
+
+📖 Let's create a table using different SQL data types.
+
+```sql
+CREATE TABLE StudentDetails (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    age INT,
+    mark DECIMAL(5,2),
+    admission_date DATE
+);
+```
+
+🎯 **Concepts Used:**
+
+🔸 `INT` — Stores whole numbers. 🔢
+
+🔸 `VARCHAR(50)` — Stores text. 🔤
+
+🔸 `DECIMAL(5,2)` — Stores numbers with two decimal places. 💰
+
+🔸 `DATE` — Stores date values. 📅
+
+🔸 `PRIMARY KEY` — Uniquely identifies each record. 🔑
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+## 🟢 7. Insert Sample Data
+
+💻 **Example:**
+
+```sql
+INSERT INTO StudentDetails
+    (id, name, age, mark, admission_date)
+VALUES
+    (1, 'Pavithra', 20, 89.50, '2026-06-15'),
+    (2, 'Priya', 21, 92.75, '2026-06-16');
+```
+
+🎯 **Purpose:** Adds two student records to the table. 👩‍🎓
+
+## 🟢 8. Retrieve the Records
+
+💻 **Example:**
+
+```sql
+SELECT * FROM StudentDetails;
+```
+
+🎯 **Purpose:** Displays all columns and records from the `StudentDetails` table. 📊
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 🧠📚 TODAY'S LEARNING SUMMARY 📚🧠
+
+✅ Understood what SQL data types are.  
+✅ Learned numeric data types: `INT` and `DECIMAL`.  
+✅ Learned string data types: `CHAR` and `VARCHAR`.  
+✅ Learned date and time data types: `DATE`, `TIME`, and `DATETIME`.  
+✅ Created a table using different data types.  
+✅ Inserted and retrieved sample records.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌱 **Day 02 — Building a Strong Foundation in SQL!** 🚀💻
+
+💖 Learn 📚 | Practice ✍️ | Improve 📈 | Repeat 🔁
+
+#SQL #SQLLearning #MySQL #SQLDataTypes #Database #LearningJourney #100DaysOfCode
