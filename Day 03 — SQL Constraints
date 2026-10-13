@@ -1,0 +1,234 @@
+# 🌸 SQL DAILY LEARNING JOURNEY 🚀
+
+# 💖 Day 03 — SQL Constraints 🔐
+
+📅 **Date:** 13 October 2026  
+🎯 **Goal:** Understand SQL Constraints  
+💻 **Focus:** Data Integrity and Table Rules
+
+---
+
+## 🌟 1. 💡 What are SQL Constraints?
+
+🔹 **Definition:** SQL Constraints are rules applied to table columns to maintain the accuracy and integrity of data in a database.
+
+📌 They help prevent invalid or duplicate data from being inserted into a table.
+
+💡 **Example:** A student ID should be unique, and a student's name should not be empty if the column has a `NOT NULL` constraint.
+
+---
+
+## 🌟 2. 🔑 Types of SQL Constraints
+
+### 🟢 1. NOT NULL
+
+📖 **Definition:** The `NOT NULL` constraint prevents a column from storing `NULL` values.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT,
+    name VARCHAR(50) NOT NULL
+);
+```
+
+🎯 **Purpose:** Every student record must have a name.
+
+---
+
+### 🟢 2. UNIQUE
+
+📖 **Definition:** The `UNIQUE` constraint ensures that values in a column or combination of columns are unique.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT,
+    email VARCHAR(100) UNIQUE
+);
+```
+
+🎯 **Purpose:** Two students cannot have the same email address.
+
+🧠 **Remember:** In MySQL, a `UNIQUE` column can generally contain multiple `NULL` values.
+
+---
+
+### 🟢 3. PRIMARY KEY 🔐
+
+📖 **Definition:** A `PRIMARY KEY` uniquely identifies each record in a table and does not allow `NULL` values.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50)
+);
+```
+
+🎯 **Purpose:** Every student must have a unique ID.
+
+🧠 **Remember:**
+- Only one primary key constraint per table.
+- A primary key can contain one column or multiple columns.
+- Duplicate and `NULL` values are not allowed.
+
+---
+
+### 🟢 4. FOREIGN KEY 🔗
+
+📖 **Definition:** A `FOREIGN KEY` creates a relationship between tables by referencing a primary key or another eligible unique key in a referenced table.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Departments (
+    dept_id INT PRIMARY KEY,
+    dept_name VARCHAR(50)
+);
+
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    dept_id INT,
+    FOREIGN KEY (dept_id)
+        REFERENCES Departments(dept_id)
+);
+```
+
+🎯 **Purpose:** Ensures that a student's department ID refers to an existing department, subject to the foreign key rules.
+
+🧠 **Remember:** A foreign key can contain duplicate values and can contain `NULL` unless `NOT NULL` is also specified.
+
+---
+
+### 🟢 5. CHECK ✅
+
+📖 **Definition:** The `CHECK` constraint ensures that values satisfy a specified condition.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    mark INT CHECK (mark >= 0 AND mark <= 100)
+);
+```
+
+🎯 **Purpose:** The mark must be between 0 and 100.
+
+---
+
+### 🟢 6. DEFAULT 🎯
+
+📖 **Definition:** The `DEFAULT` constraint provides a predefined value when a column value is not specified in an `INSERT` statement.
+
+💻 **Example:**
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    city VARCHAR(50) DEFAULT 'Namakkal'
+);
+```
+
+🎯 **Purpose:** If the city is omitted during insertion, the default city is `Namakkal`.
+
+🧠 **Remember:** An explicitly supplied `NULL` is not automatically replaced by the default value.
+
+---
+
+## 🌟 3. 📊 SQL Constraints Summary
+
+| Constraint | Purpose |
+|:---|:---|
+| `NOT NULL` | Prevents `NULL` values |
+| `UNIQUE` | Prevents duplicate non-`NULL` values |
+| `PRIMARY KEY` | Uniquely identifies each record |
+| `FOREIGN KEY` | Maintains relationships between tables |
+| `CHECK` | Validates a condition |
+| `DEFAULT` | Supplies a predefined value when omitted |
+
+---
+
+## 🌟 4. 💻 Practical SQL Example
+
+### 🟢 Create a Table Using Constraints
+
+```sql
+CREATE TABLE Employees (
+    emp_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    age INT CHECK (age >= 18),
+    city VARCHAR(50) DEFAULT 'Namakkal'
+);
+```
+
+### 🟢 Insert Valid Data
+
+```sql
+INSERT INTO Employees
+    (emp_id, name, email, age)
+VALUES
+    (1, 'Pavithra', 'pavithra@example.com', 21);
+```
+
+### 🟢 View the Records
+
+```sql
+SELECT * FROM Employees;
+```
+
+🎯 **Expected Result:**
+
+| emp_id | name | email | age | city |
+|---:|---|---|---:|---|
+| 1 | Pavithra | pavithra@example.com | 21 | Namakkal |
+
+💡 **What happened?**
+
+- `PRIMARY KEY` ensures the employee ID is unique.
+- `NOT NULL` requires a name.
+- `UNIQUE` prevents duplicate email values.
+- `CHECK` ensures the age is at least 18.
+- `DEFAULT` supplies `Namakkal` because the city was omitted.
+
+---
+
+## 🌟 5. 🧠 Important Interview Points
+
+**❓ Can a primary key contain NULL values?**
+
+No. A primary key cannot contain `NULL` values or duplicate values.
+
+**❓ Can a foreign key contain duplicate values?**
+
+Yes. Multiple records can reference the same record in another table.
+
+**❓ What is the difference between PRIMARY KEY and UNIQUE?**
+
+A primary key uniquely identifies each record and does not allow `NULL`. A unique constraint prevents duplicate values, and MySQL generally allows multiple `NULL` values in a unique column.
+
+**❓ What is the difference between NOT NULL and UNIQUE?**
+
+
+🌟 6. 📚 Today's Learning Summary
+
+✅ Understood the meaning of SQL constraints.
+✅ Learned NOT NULL and UNIQUE.
+✅ Learned PRIMARY KEY and FOREIGN KEY.
+✅ Practiced CHECK and DEFAULT.
+✅ Created a table with multiple constraints.
+✅ Inserted and retrieved records using SQL queries.
+
+💖 Day 03 Complete — Building Strong SQL Fundamentals! 🚀
+
+📚 Learn → 💻 Practice → 🧠 Understand → 📈 Improve
+
+#SQL #MySQL #SQLConstraints #Database #LearningJourney #DailyLearning #100DaysOfCode
