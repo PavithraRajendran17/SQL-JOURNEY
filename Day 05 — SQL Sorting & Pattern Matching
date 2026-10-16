@@ -1,0 +1,240 @@
+
+# 🗄️ SQL Daily Learning Journey 🚀
+
+<h1 align="center">🌸 Day 05 — SQL Sorting & Pattern Matching 🔍</h1>
+
+<p align="center">
+  <b>📚 Learn • 💻 Practice • 🧠 Improve</b>
+</p>
+
+---
+
+## 🎯 Learning Objectives
+
+- 📌 Sort records using `ORDER BY`.
+- 🔢 Limit the number of results using `LIMIT`.
+- 🔍 Search patterns using `LIKE`.
+- 📊 Filter ranges using `BETWEEN`.
+- 🎯 Match multiple values using `IN`.
+
+---
+
+## 📋 1. Sample Table — Students
+
+We will use the following table to practice SQL queries.
+
+| id | name | department | mark |
+|---:|:---|:---|---:|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+| 4 | Divya | CSE | 88 |
+| 5 | Ravi | IT | 82 |
+
+---
+
+## 🔹 2. ORDER BY Clause 📊
+
+**Definition:** The `ORDER BY` clause sorts records in ascending or descending order.
+
+### 🟢 ASC — Ascending Order
+
+```sql
+SELECT *
+FROM Students
+ORDER BY mark ASC;
+```
+
+🎯 **Purpose:** Displays students from the lowest mark to the highest mark.
+
+### 🔵 DESC — Descending Order
+
+```sql
+SELECT *
+FROM Students
+ORDER BY mark DESC;
+```
+
+🎯 **Purpose:** Displays students from the highest mark to the lowest mark.
+
+💡 **Remember:**
+- `ASC` → Smallest to largest (default).
+- `DESC` → Largest to smallest.
+
+---
+
+## 🔹 3. LIMIT Clause 🔢
+
+**Definition:** The `LIMIT` clause restricts the number of rows returned by a query in MySQL.
+
+### 💻 Example — Display the Top 3 Records
+
+```sql
+SELECT *
+FROM Students
+ORDER BY mark DESC
+LIMIT 3;
+```
+
+🎯 **Result:** Priya, Divya, and Arun.
+
+💡 **Purpose:** Displays only three records after sorting by marks in descending order.
+
+---
+
+## 🔹 4. LIKE Operator 🔍
+
+**Definition:** The `LIKE` operator searches for a specified pattern in a column.
+
+### ✨ Wildcard Characters
+
+| Wildcard | Meaning | Example |
+|:---:|:---|:---|
+| `%` | Matches zero or more characters | `'A%'` |
+| `_` | Matches exactly one character | `'A_'` |
+
+### 🟢 Example 1 — Names Starting with 'A'
+
+```sql
+SELECT *
+FROM Students
+WHERE name LIKE 'A%';
+```
+
+🎯 **Result:** Arun.
+
+### 🟣 Example 2 — Names Ending with 'a'
+
+```sql
+SELECT *
+FROM Students
+WHERE name LIKE '%a';
+```
+
+🎯 **Result:** Divya.
+
+### 🔵 Example 3 — Names Containing 'a'
+
+```sql
+SELECT *
+FROM Students
+WHERE name LIKE '%a%';
+```
+
+🎯 **Purpose:** Finds names containing the letter `a`.
+
+---
+
+## 🔹 5. BETWEEN Operator 📈
+
+**Definition:** The `BETWEEN` operator selects values within a specified range, including both boundary values.
+
+### 💻 Example — Marks Between 80 and 90
+
+```sql
+SELECT *
+FROM Students
+WHERE mark BETWEEN 80 AND 90;
+```
+
+🎯 **Result:** Arun, Priya, Divya, and Ravi.
+
+💡 **Remember:** `BETWEEN 80 AND 90` includes both 80 and 90.
+
+---
+
+## 🔹 6. IN Operator 🎯
+
+**Definition:** The `IN` operator checks whether a value matches any value in a specified list.
+
+### 💻 Example — Students in CSE or IT
+
+```sql
+SELECT *
+FROM Students
+WHERE department IN ('CSE', 'IT');
+```
+
+🎯 **Result:** Arun, Priya, Divya, and Ravi.
+
+💡 **Purpose:** This is a simple alternative to using multiple `OR` conditions.
+
+---
+
+## 📊 7. SQL Commands Summary
+
+| Clause / Operator | Purpose |
+|:---|:---|
+| `ORDER BY` | Sorts records |
+| `ASC` | Sorts in ascending order |
+| `DESC` | Sorts in descending order |
+| `LIMIT` | Restricts the number of rows |
+| `LIKE` | Searches for a pattern |
+| `BETWEEN` | Filters a range of values |
+| `IN` | Matches values from a list |
+
+---
+
+## 🎤 8. Interview Questions
+
+**Q1. What is ORDER BY?**
+
+`ORDER BY` sorts records in ascending or descending order.
+
+**Q2. What is the default sorting order in SQL?**
+
+The default sorting order of `ORDER BY` is ascending (`ASC`).
+
+**Q3. What is the use of LIMIT?**
+
+`LIMIT` restricts the number of rows returned by a query in MySQL.
+
+**Q4. What is the difference between % and _ in LIKE?**
+
+`%` matches zero or more characters, while `_` matches exactly one character.
+
+**Q5. Is BETWEEN inclusive?**
+
+Yes. `BETWEEN` includes both the lower and upper boundary values.
+
+**Q6. What is the use of IN?**
+
+`IN` checks whether a value matches any value in a specified list.
+
+---
+
+## 🧠 9. Practice Exercises
+
+Try writing SQL queries for these tasks! 💪
+
+- 📝 Display students in descending order of marks.
+- 📝 Display the top two students based on marks.
+- 📝 Find students whose names start with `D`.
+- 📝 Find students whose marks are between 80 and 90.
+- 📝 Display students who belong to CSE or ECE.
+- 📝 Find students whose names end with `i`.
+
+---
+
+## ✅ 10. Today's Learning Summary
+
+- 📚 Learned `ORDER BY`, `ASC`, and `DESC`.
+- 🔢 Practiced `LIMIT`.
+- 🔍 Understood `LIKE` and its wildcards.
+- 📈 Learned `BETWEEN`.
+- 🎯 Practiced the `IN` operator.
+- 💻 Improved SQL data retrieval skills.
+
+---
+
+## 🌱 My Learning Journey
+
+✨ Every query makes me more confident!
+
+💖 **Day 05 Completed — Sorting, Searching & Filtering Data!**
+
+<p align="center">
+  <b>🌸 Learn 📚 | Practice 💻 | Improve 🚀 🌸</b>
+</p>
+
+#SQL #MySQL #SQLQueries #OrderBy #LikeOperator #Database #DailyLearning
