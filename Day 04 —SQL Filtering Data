@@ -1,0 +1,257 @@
+
+# 🗄️ SQL Daily Learning Journey 🚀
+
+<h1 align="center">🌸 Day 04 — SQL Filtering Data 🔍</h1>
+
+<p align="center">
+  <b>📚 Learn • 💻 Practice • 🧠 Improve</b>
+</p>
+
+---
+
+## 🎯 Learning Objectives
+
+- 📌 Understand the `SELECT` statement.
+- 🔍 Filter records using the `WHERE` clause.
+- 🔗 Combine conditions using `AND` and `OR`.
+- 🚫 Exclude matching records using `NOT`.
+- 💻 Practice SQL queries with examples.
+
+---
+
+## 💡 1. What Is Data Filtering?
+
+**Data filtering** means retrieving only the records that satisfy a particular condition.
+
+✨ SQL uses the `WHERE` clause to filter rows from a table.
+
+**Example:** Display only students who scored more than 80 marks.
+
+---
+
+## 📋 2. Sample Table — Students
+
+We will use this table to practice SQL queries.
+
+| id | name | department | mark |
+|---:|:---|:---|---:|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+| 4 | Divya | CSE | 88 |
+| 5 | Ravi | IT | 82 |
+
+### 🛠️ Create the Table
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(20),
+    mark INT
+);
+```
+
+### ➕ Insert Sample Data
+
+```sql
+INSERT INTO Students (id, name, department, mark)
+VALUES
+(1, 'Arun', 'CSE', 85),
+(2, 'Priya', 'IT', 90),
+(3, 'Kavin', 'ECE', 78),
+(4, 'Divya', 'CSE', 88),
+(5, 'Ravi', 'IT', 82);
+```
+
+---
+
+## 🔹 3. SELECT Statement
+
+**Definition:** The `SELECT` statement retrieves data from one or more tables.
+
+### 💻 Example 1 — Display All Columns
+
+```sql
+SELECT * FROM Students;
+```
+
+🎯 **Purpose:** Displays all columns and rows from the `Students` table.
+
+### 💻 Example 2 — Display Specific Columns
+
+```sql
+SELECT name, mark
+FROM Students;
+```
+
+🎯 **Purpose:** Displays only student names and marks.
+
+---
+
+## 🔹 4. WHERE Clause
+
+**Definition:** The `WHERE` clause filters records based on a specified condition.
+
+### 💻 Example 1 — Students Scoring More Than 80
+
+```sql
+SELECT *
+FROM Students
+WHERE mark > 80;
+```
+
+🎯 **Result:** Arun, Priya, Divya, and Ravi.
+
+### 💻 Example 2 — Students in CSE
+
+```sql
+SELECT *
+FROM Students
+WHERE department = 'CSE';
+```
+
+🎯 **Result:** Arun and Divya.
+
+### 🧠 Common Comparison Operators
+
+| Operator | Meaning | Example |
+|:---:|:---|:---|
+| `=` | Equal to | `mark = 90` |
+| `>` | Greater than | `mark > 80` |
+| `<` | Less than | `mark < 80` |
+| `>=` | Greater than or equal to | `mark >= 85` |
+| `<=` | Less than or equal to | `mark <= 85` |
+| `<>` | Not equal to | `department <> 'CSE'` |
+
+---
+
+## 🔹 5. AND Operator 🔗
+
+**Definition:** The `AND` operator returns records when all specified conditions are true.
+
+### 💻 Example
+
+```sql
+SELECT *
+FROM Students
+WHERE department = 'CSE'
+AND mark > 85;
+```
+
+🎯 **Result:** Divya.
+
+💡 Both conditions must be true:
+- Department must be CSE.
+- Marks must be greater than 85.
+
+---
+
+## 🔹 6. OR Operator 🔀
+
+**Definition:** The `OR` operator returns records when at least one specified condition is true.
+
+### 💻 Example
+
+```sql
+SELECT *
+FROM Students
+WHERE department = 'CSE'
+OR department = 'IT';
+```
+
+🎯 **Result:** Arun, Priya, Divya, and Ravi.
+
+💡 A student can belong to CSE or IT to match the condition.
+
+---
+
+## 🔹 7. NOT Operator 🚫
+
+**Definition:** The `NOT` operator reverses a condition.
+
+### 💻 Example
+
+```sql
+SELECT *
+FROM Students
+WHERE NOT department = 'CSE';
+```
+
+🎯 **Result:** Priya, Kavin, and Ravi.
+
+💡 This query displays students whose department is not CSE.
+
+---
+
+## 📊 8. SQL Filtering Summary
+
+| Clause / Operator | Purpose |
+|:---|:---|
+| `SELECT` | Retrieves data |
+| `WHERE` | Filters records |
+| `AND` | All conditions must be true |
+| `OR` | At least one condition must be true |
+| `NOT` | Reverses a condition |
+
+---
+
+## 🎤 9. Interview Questions
+
+**Q1. What is the SELECT statement?**
+
+The `SELECT` statement retrieves data from a database table.
+
+**Q2. What is the WHERE clause?**
+
+The `WHERE` clause filters records based on a specified condition.
+
+**Q3. What is the difference between AND and OR?**
+
+`AND` requires all conditions to be true, whereas `OR` requires at least one condition to be true.
+
+**Q4. What is the NOT operator?**
+
+The `NOT` operator reverses a condition and selects records that do not satisfy it.
+
+**Q5. Can we use WHERE with SELECT?**
+
+Yes. We use `WHERE` with `SELECT` to retrieve only the records that satisfy a specified condition.
+
+---
+
+## 🧠 10. Practice Exercises
+
+Try writing SQL queries for these tasks! 💪
+
+- 📝 Display students who scored less than 85.
+- 📝 Display students who belong to the IT department.
+- 📝 Display students whose marks are at least 85.
+- 📝 Display students who belong to CSE and scored more than 80.
+- 📝 Display students who belong to ECE or scored more than 85.
+- 📝 Display students who do not belong to IT.
+
+---
+
+## ✅ Today's Learning Summary
+
+- 📚 Learned the `SELECT` statement.
+- 🔍 Practiced the `WHERE` clause.
+- 🔗 Understood `AND` and `OR`.
+- 🚫 Practiced the `NOT` operator.
+- 💻 Executed queries using comparison operators.
+- 🧠 Learned how to filter records efficiently.
+
+---
+
+## 🌱 My Learning Journey
+
+✨ One query at a time, one step closer to mastery!
+
+💖 **Day 04 Completed — Learning to Filter Data with SQL!**
+
+<p align="center">
+  <b>🌸 Learn 📚 | Practice 💻 | Improve 🚀 🌸</b>
+</p>
+
+#SQL #MySQL #SQLQueries #DataFiltering #Database #DailyLearning #LearningJourney
