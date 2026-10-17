@@ -1,0 +1,273 @@
+
+# 🗄️ SQL Daily Learning Journey 🚀
+
+<h1 align="center">🌸 Day 06 — SQL Aggregate Functions 📊</h1>
+
+<p align="center">
+  <b>📚 Learn • 💻 Practice • 🧠 Improve</b>
+</p>
+
+---
+
+## 🎯 Learning Objectives
+
+- 📌 Understand SQL Aggregate Functions.
+- 🔢 Count records using `COUNT()`.
+- ➕ Calculate totals using `SUM()`.
+- 📊 Find averages using `AVG()`.
+- ⬇️ Find minimum and maximum values using `MIN()` and `MAX()`.
+- 💻 Practice aggregate functions with SQL queries.
+
+---
+
+## 💡 1. What Are Aggregate Functions?
+
+**Definition:** SQL Aggregate Functions perform calculations on a set of rows and return a single result.
+
+🎯 They help summarize data and extract useful information from database tables.
+
+💡 **Example:** Finding the total marks, average marks, highest mark, and lowest mark of students.
+
+---
+
+## 📋 2. Sample Table — Students
+
+We will use this table to practice aggregate functions.
+
+| id | name | department | mark |
+|---:|:---|:---|---:|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+| 4 | Divya | CSE | 88 |
+| 5 | Ravi | IT | 82 |
+
+### 🛠️ Create the Table
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(20),
+    mark INT
+);
+```
+
+### ➕ Insert Sample Data
+
+```sql
+INSERT INTO Students (id, name, department, mark)
+VALUES
+(1, 'Arun', 'CSE', 85),
+(2, 'Priya', 'IT', 90),
+(3, 'Kavin', 'ECE', 78),
+(4, 'Divya', 'CSE', 88),
+(5, 'Ravi', 'IT', 82);
+```
+
+---
+
+## 🔹 3. COUNT() Function 🔢
+
+**Definition:** The `COUNT()` function returns the number of rows or non-`NULL` values, depending on the expression.
+
+### 💻 Example 1 — Count All Students
+
+```sql
+SELECT COUNT(*) AS total_students
+FROM Students;
+```
+
+🎯 **Result:** `5`
+
+💡 `COUNT(*)` counts all rows.
+
+### 💻 Example 2 — Count Student Names
+
+```sql
+SELECT COUNT(name) AS total_names
+FROM Students;
+```
+
+🎯 **Result:** `5`
+
+💡 `COUNT(column_name)` counts non-`NULL` values in that column.
+
+---
+
+## 🔹 4. SUM() Function ➕
+
+**Definition:** The `SUM()` function calculates the total of numeric values in a column.
+
+### 💻 Example — Calculate Total Marks
+
+```sql
+SELECT SUM(mark) AS total_marks
+FROM Students;
+```
+
+🎯 **Result:** `423`
+
+🧮 **Calculation:**
+
+`85 + 90 + 78 + 88 + 82 = 423`
+
+💡 **Purpose:** Finds the total marks of all students.
+
+---
+
+## 🔹 5. AVG() Function 📊
+
+**Definition:** The `AVG()` function calculates the average of non-`NULL` numeric values.
+
+### 💻 Example — Calculate Average Marks
+
+```sql
+SELECT AVG(mark) AS average_marks
+FROM Students;
+```
+
+🎯 **Result:** `84.6`
+
+🧮 **Calculation:**
+
+`423 / 5 = 84.6`
+
+💡 **Purpose:** Finds the average mark of all students.
+
+---
+
+## 🔹 6. MIN() Function ⬇️
+
+**Definition:** The `MIN()` function returns the smallest value in a column.
+
+### 💻 Example — Find the Lowest Mark
+
+```sql
+SELECT MIN(mark) AS lowest_mark
+FROM Students;
+```
+
+🎯 **Result:** `78`
+
+💡 **Purpose:** Identifies the lowest mark in the table.
+
+---
+
+## 🔹 7. MAX() Function ⬆️
+
+**Definition:** The `MAX()` function returns the largest value in a column.
+
+### 💻 Example — Find the Highest Mark
+
+```sql
+SELECT MAX(mark) AS highest_mark
+FROM Students;
+```
+
+🎯 **Result:** `90`
+
+💡 **Purpose:** Identifies the highest mark in the table.
+
+---
+
+## 📊 8. Aggregate Functions Summary
+
+| Function | Purpose | Result |
+|:---|:---|---:|
+| `COUNT(*)` | Counts all rows | 5 |
+| `SUM(mark)` | Calculates total marks | 423 |
+| `AVG(mark)` | Calculates average marks | 84.6 |
+| `MIN(mark)` | Finds the lowest mark | 78 |
+| `MAX(mark)` | Finds the highest mark | 90 |
+
+---
+
+## 💻 9. Practical SQL Example
+
+### 🟢 Find All Statistics in One Query
+
+```sql
+SELECT
+    COUNT(*) AS total_students,
+    SUM(mark) AS total_marks,
+    AVG(mark) AS average_marks,
+    MIN(mark) AS lowest_mark,
+    MAX(mark) AS highest_mark
+FROM Students;
+```
+
+🎯 **Expected Result:**
+
+| total_students | total_marks | average_marks | lowest_mark | highest_mark |
+|---:|---:|---:|---:|---:|
+| 5 | 423 | 84.6 | 78 | 90 |
+
+✨ One query can calculate all five statistics!
+
+---
+
+## 🎤 10. Interview Questions
+
+**Q1. What are Aggregate Functions in SQL?**
+
+Aggregate Functions perform calculations on a set of rows and return a single result.
+
+**Q2. What is the difference between COUNT(*) and COUNT(column_name)?**
+
+`COUNT(*)` counts all rows, while `COUNT(column_name)` counts only non-`NULL` values in that column.
+
+**Q3. What is the use of SUM()?**
+
+`SUM()` calculates the total of numeric values in a column.
+
+**Q4. What is the use of AVG()?**
+
+`AVG()` calculates the average of non-`NULL` numeric values.
+
+**Q5. What is the difference between MIN() and MAX()?**
+
+`MIN()` returns the smallest value, whereas `MAX()` returns the largest value.
+
+**Q6. Do aggregate functions generally ignore NULL values?**
+
+Yes. Functions such as `SUM()`, `AVG()`, `MIN()`, and `MAX()` generally ignore `NULL` values. `COUNT(*)` counts rows regardless of `NULL` values in individual columns.
+
+---
+
+## 🧠 11. Practice Exercises
+
+Try writing SQL queries for these tasks! 💪
+
+- 📝 Count the total number of students.
+- 📝 Calculate the total marks of all students.
+- 📝 Find the average mark.
+- 📝 Find the highest mark.
+- 📝 Find the lowest mark.
+- 📝 Calculate all five statistics in one query.
+
+---
+
+## ✅ 12. Today's Learning Summary
+
+- 📚 Understood SQL Aggregate Functions.
+- 🔢 Practiced `COUNT()`.
+- ➕ Learned `SUM()`.
+- 📊 Calculated averages using `AVG()`.
+- ⬇️ Found minimum values using `MIN()`.
+- ⬆️ Found maximum values using `MAX()`.
+- 💻 Combined aggregate functions in one query.
+
+---
+
+## 🌱 My Learning Journey
+
+✨ Every query helps me understand data better!
+
+💖 **Day 06 Completed — Summarizing Data with SQL!**
+
+<p align="center">
+  <b>🌸 Learn 📚 | Practice 💻 | Improve 🚀 🌸</b>
+</p>
+
+#SQL #MySQL #AggregateFunctions #Database #SQLPractice #DailyLearning #LearningJourney
