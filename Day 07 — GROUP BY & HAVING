@@ -1,0 +1,266 @@
+
+# 🗄️ SQL Daily Learning Journey 🚀
+
+<h1 align="center">🌸 Day 07 — GROUP BY & HAVING 📊</h1>
+
+<p align="center">
+  <b>📚 Learn • 💻 Practice • 🧠 Improve</b>
+</p>
+
+---
+
+## 🎯 Learning Objectives
+
+- 📌 Understand the `GROUP BY` clause.
+- 📊 Group records based on common values.
+- 🔢 Use aggregate functions with `GROUP BY`.
+- 🔍 Filter grouped results using `HAVING`.
+- 💻 Understand the difference between `WHERE` and `HAVING`.
+
+---
+
+## 💡 1. What Is GROUP BY?
+
+**Definition:** The `GROUP BY` clause groups rows that have the same values in specified columns into summary rows.
+
+✨ It is commonly used with aggregate functions such as `COUNT()`, `SUM()`, `AVG()`, `MIN()`, and `MAX()`.
+
+🎯 **Example:** Finding the number of students in each department.
+
+---
+
+## 📋 2. Sample Table — Students
+
+We will use this table to practice SQL queries.
+
+| id | name | department | mark |
+|---:|:---|:---|---:|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+| 4 | Divya | CSE | 88 |
+| 5 | Ravi | IT | 82 |
+
+### 🛠️ Create the Table
+
+```sql
+CREATE TABLE Students (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(20),
+    mark INT
+);
+```
+
+### ➕ Insert Sample Data
+
+```sql
+INSERT INTO Students (id, name, department, mark)
+VALUES
+(1, 'Arun', 'CSE', 85),
+(2, 'Priya', 'IT', 90),
+(3, 'Kavin', 'ECE', 78),
+(4, 'Divya', 'CSE', 88),
+(5, 'Ravi', 'IT', 82);
+```
+
+---
+
+## 🔹 3. GROUP BY Clause 📊
+
+**Definition:** `GROUP BY` combines rows with the same value in a column into groups.
+
+### 💻 Example 1 — Count Students in Each Department
+
+```sql
+SELECT department, COUNT(*) AS total_students
+FROM Students
+GROUP BY department;
+```
+
+🎯 **Expected Result:**
+
+| department | total_students |
+|:---|---:|
+| CSE | 2 |
+| ECE | 1 |
+| IT | 2 |
+
+💡 **Purpose:** Counts the number of students in each department.
+
+### 💻 Example 2 — Calculate Average Marks by Department
+
+```sql
+SELECT department, AVG(mark) AS average_marks
+FROM Students
+GROUP BY department;
+```
+
+🎯 **Expected Result:**
+
+| department | average_marks |
+|:---|---:|
+| CSE | 86.5 |
+| ECE | 78.0 |
+| IT | 86.0 |
+
+💡 **Purpose:** Calculates the average mark for each department.
+
+### 💻 Example 3 — Find the Highest Mark in Each Department
+
+```sql
+SELECT department, MAX(mark) AS highest_mark
+FROM Students
+GROUP BY department;
+```
+
+🎯 **Purpose:** Displays the highest mark in every department.
+
+---
+
+## 🔹 4. HAVING Clause 🔍
+
+**Definition:** The `HAVING` clause filters groups based on a specified condition, commonly using aggregate functions.
+
+🎯 **Example:** Display only departments with more than one student.
+
+### 💻 Example 1 — Filter Departments by Student Count
+
+```sql
+SELECT department, COUNT(*) AS total_students
+FROM Students
+GROUP BY department
+HAVING COUNT(*) > 1;
+```
+
+🎯 **Expected Result:**
+
+| department | total_students |
+|:---|---:|
+| CSE | 2 |
+| IT | 2 |
+
+💡 **Purpose:** Displays only departments that have more than one student.
+
+### 💻 Example 2 — Departments With Average Marks Above 85
+
+```sql
+SELECT department, AVG(mark) AS average_marks
+FROM Students
+GROUP BY department
+HAVING AVG(mark) > 85;
+```
+
+🎯 **Expected Result:**
+
+| department | average_marks |
+|:---|---:|
+| CSE | 86.5 |
+| IT | 86.0 |
+
+💡 **Purpose:** Displays departments whose average marks are greater than 85.
+
+---
+
+## 🔹 5. WHERE vs HAVING ⚖️
+
+| WHERE | HAVING |
+|:---|:---|
+| Filters individual rows. | Filters groups. |
+| Applied before grouping. | Applied after grouping. |
+| Commonly used with row-level conditions. | Commonly used with aggregate conditions. |
+| Cannot directly use aggregate functions in its condition. | Can filter using aggregate functions. |
+
+### 💻 Example — Using WHERE and HAVING Together
+
+```sql
+SELECT department, AVG(mark) AS average_marks
+FROM Students
+WHERE mark >= 80
+GROUP BY department
+HAVING AVG(mark) > 85;
+```
+
+🎯 **How It Works:**
+
+1. `WHERE mark >= 80` filters individual student records.
+2. `GROUP BY department` groups the remaining records.
+3. `AVG(mark)` calculates each department's average.
+4. `HAVING AVG(mark) > 85` keeps only groups whose average is above 85.
+
+---
+
+## 📊 6. SQL Clauses Summary
+
+| Clause | Purpose |
+|:---|:---|
+| `WHERE` | Filters rows |
+| `GROUP BY` | Groups rows with common values |
+| `HAVING` | Filters groups |
+| `COUNT()` | Counts rows or non-NULL values |
+| `SUM()` | Calculates a total |
+| `AVG()` | Calculates an average |
+| `MIN()` | Finds the smallest value |
+| `MAX()` | Finds the largest value |
+
+---
+
+## 🎤 7. Interview Questions
+
+**Q1. What is GROUP BY in SQL?**
+
+`GROUP BY` groups rows with the same values so that aggregate calculations can be performed for each group.
+
+**Q2. What is HAVING in SQL?**
+
+`HAVING` filters grouped results based on a condition.
+
+**Q3. What is the difference between WHERE and HAVING?**
+
+`WHERE` filters rows before grouping, while `HAVING` filters groups after grouping.
+
+**Q4. Can we use aggregate functions with GROUP BY?**
+
+Yes. Aggregate functions such as `COUNT()`, `SUM()`, and `AVG()` are commonly used with `GROUP BY`.
+
+**Q5. Can we use WHERE and HAVING in the same query?**
+
+Yes. `WHERE` filters rows before grouping, and `HAVING` filters the resulting groups.
+
+---
+
+## 🧠 8. Practice Exercises
+
+Try writing SQL queries for these tasks! 💪
+
+- 📝 Count the students in each department.
+- 📝 Find the average mark for each department.
+- 📝 Find the highest mark in each department.
+- 📝 Display departments with more than one student.
+- 📝 Display departments with an average mark above 85.
+- 📝 Filter students scoring at least 80, group them by department, and display groups with an average mark above 85.
+
+---
+
+## ✅ 9. Today's Learning Summary
+
+- 📚 Learned the `GROUP BY` clause.
+- 📊 Grouped records by department.
+- 🔢 Used aggregate functions with groups.
+- 🔍 Learned the `HAVING` clause.
+- ⚖️ Understood `WHERE` vs `HAVING`.
+- 💻 Practiced filtering grouped data.
+
+---
+
+## 🌱 My Learning Journey
+
+✨ Turning rows into meaningful insights, one query at a time!
+
+💖 **Day 07 Completed — Grouping & Summarizing Data with SQL!**
+
+<p align="center">
+  <b>🌸 Learn 📚 | Practice 💻 | Improve 🚀 🌸</b>
+</p>
+
+#SQL #MySQL #GroupBy #Having #AggregateFunctions #Database #DailyLearning
