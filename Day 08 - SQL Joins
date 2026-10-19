@@ -1,0 +1,230 @@
+
+# 🌸 SQL Daily Learning Journey — Day 08
+## 🔗 Topic: SQL Joins
+
+📅 **Date:** 19 October 2026  
+🎯 **Goal:** Understand SQL Joins and learn how to retrieve data from multiple tables.
+
+---
+
+## 💡 1. What is a SQL JOIN?
+
+A **JOIN** is used to combine rows from two or more tables based on a related column between them.
+
+✨ **Why do we use JOINs?**
+- To retrieve related information from multiple tables.
+- To avoid storing the same information repeatedly.
+- To generate meaningful reports from related tables.
+
+---
+
+## 🗂️ 2. Sample Tables
+
+### 👩‍🎓 Students Table
+
+| student_id | name | dept_id |
+|---|---|---|
+| 1 | Arun | 101 |
+| 2 | Priya | 102 |
+| 3 | Kavin | 103 |
+| 4 | Divya | 101 |
+
+### 🏢 Departments Table
+
+| dept_id | department |
+|---|---|
+| 101 | CSE |
+| 102 | IT |
+| 104 | ECE |
+
+---
+
+## 🔵 3. Types of SQL JOINs
+
+### 1️⃣ INNER JOIN
+
+Returns only the rows that have matching values in both tables.
+
+```sql
+SELECT Students.name, Departments.department
+FROM Students
+INNER JOIN Departments
+ON Students.dept_id = Departments.dept_id;
+```
+
+**Result:**
+
+| name | department |
+|---|---|
+| Arun | CSE |
+| Priya | IT |
+| Divya | CSE |
+
+💡 Kavin is excluded because dept_id 103 has no matching department.
+
+---
+
+### 2️⃣ LEFT JOIN (LEFT OUTER JOIN)
+
+Returns all rows from the left table and matching rows from the right table. If there is no match, the right-table columns contain `NULL`.
+
+```sql
+SELECT Students.name, Departments.department
+FROM Students
+LEFT JOIN Departments
+ON Students.dept_id = Departments.dept_id;
+```
+
+**Result:**
+
+| name | department |
+|---|---|
+| Arun | CSE |
+| Priya | IT |
+| Kavin | NULL |
+| Divya | CSE |
+
+💡 Every student is included, even if there is no matching department.
+
+---
+
+### 3️⃣ RIGHT JOIN (RIGHT OUTER JOIN)
+
+Returns all rows from the right table and matching rows from the left table. If there is no match, the left-table columns contain `NULL`.
+
+```sql
+SELECT Students.name, Departments.department
+FROM Students
+RIGHT JOIN Departments
+ON Students.dept_id = Departments.dept_id;
+```
+
+**Result:**
+
+| name | department |
+|---|---|
+| Arun | CSE |
+| Priya | IT |
+| Divya | CSE |
+| NULL | ECE |
+
+💡 ECE is included even though no student belongs to dept_id 104.
+
+---
+
+### 4️⃣ FULL OUTER JOIN
+
+Returns all matching and non-matching rows from both tables.
+
+```sql
+SELECT Students.name, Departments.department
+FROM Students
+FULL OUTER JOIN Departments
+ON Students.dept_id = Departments.dept_id;
+```
+
+💡 This includes every student and every department, with `NULL` for missing matches.
+
+⚠️ **Note:** MySQL does not directly support `FULL OUTER JOIN`. It can be emulated using `LEFT JOIN`, `RIGHT JOIN`, and `UNION` (with care to avoid duplicate rows).
+
+---
+
+### 5️⃣ CROSS JOIN
+
+Returns every possible combination of rows from both tables.
+
+```sql
+SELECT Students.name, Departments.department
+FROM Students
+CROSS JOIN Departments;
+```
+
+💡 If the first table has 4 rows and the second has 3 rows, the result contains **4 × 3 = 12 rows**.
+
+---
+
+## 📊 4. JOINs — Quick Comparison
+
+| JOIN Type | What It Returns |
+|---|---|
+| INNER JOIN | Only matching rows |
+| LEFT JOIN | All left-table rows + matches |
+| RIGHT JOIN | All right-table rows + matches |
+| FULL OUTER JOIN | All rows from both tables |
+| CROSS JOIN | Every possible combination |
+
+---
+
+## 🧠 5. Real-Time Example
+
+Imagine an online shopping application.
+
+- **Customers Table:** Stores customer details.
+- **Orders Table:** Stores order details.
+- **INNER JOIN:** Finds customers who have placed orders.
+- **LEFT JOIN:** Finds all customers, including those who have never placed an order.
+
+✨ JOINs help applications display related information together.
+
+---
+
+## 🎯 6. Interview Questions & Answers
+
+**Q1. What is a JOIN in SQL?**
+
+A JOIN combines rows from two or more tables using a related column.
+
+**Q2. What is the difference between INNER JOIN and LEFT JOIN?**
+
+INNER JOIN returns only matching rows, whereas LEFT JOIN returns all rows from the left table and matching rows from the right table.
+
+**Q3. What does NULL mean in a JOIN result?**
+
+NULL may indicate that no matching row was found in the other table.
+
+**Q4. What is a CROSS JOIN?**
+
+A CROSS JOIN returns the Cartesian product of two tables.
+
+**Q5. Does MySQL support FULL OUTER JOIN directly?**
+
+No. We can simulate it using LEFT JOIN and RIGHT JOIN combined with UNION, handling duplicate rows carefully.
+
+**Q6. What is the ON clause used for?**
+
+The ON clause specifies the condition used to match rows between tables.
+
+---
+
+## ✍️ 7. Practice Exercises
+
+Try writing SQL queries for these tasks:
+
+1. Display student names with their department names using INNER JOIN.
+2. Display all students, including those without a matching department.
+3. Display all departments, including those without students.
+4. Find students who do not have a matching department.
+5. Display every possible combination of students and departments.
+
+---
+
+## ✅ 8. Today's Learning Summary
+
+- Learned what SQL JOINs are.
+- Practiced INNER JOIN.
+- Understood LEFT JOIN and RIGHT JOIN.
+- Learned the purpose of FULL OUTER JOIN.
+- Explored CROSS JOIN.
+- Compared JOIN types with examples.
+
+---
+
+## 🌱 My Learning Journey
+
+**Day 08 Completed! 🎉**
+
+Today, I learned how SQL JOINs combine related data from multiple tables.
+
+📚 Learn → 💻 Practice → 🚀 Improve
+
+#SQL #MySQL #SQLJoins #Database #DailyLearning #100DaysOfCode
