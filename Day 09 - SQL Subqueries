@@ -1,0 +1,257 @@
+
+# 🌸 SQL Daily Learning Journey — Day 09
+## 🔍 Topic: SQL Subqueries
+
+📅 **Date:** 21 October 2026  
+🎯 **Goal:** Understand subqueries and learn how to use one query inside another query.
+
+---
+
+## 💡 1. What is a Subquery?
+
+A **subquery** is a query written inside another SQL query. It is also called an inner query or nested query.
+
+The outer query uses the result returned by the inner query.
+
+✨ **Why do we use subqueries?**
+- To solve complex SQL problems.
+- To retrieve data based on the result of another query.
+- To compare values with calculated results.
+- To make certain queries easier to write and understand.
+
+---
+
+## 🗂️ 2. Sample Table — Students
+
+| id | name | department | mark |
+|---|---|---|---|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+| 4 | Divya | CSE | 88 |
+| 5 | Ravi | IT | 82 |
+
+We will use this table for our subquery examples.
+
+---
+
+## 🔵 3. Single-Row Subquery
+
+A single-row subquery returns one row. It is commonly used with operators such as `=`, `>`, `<`, `>=`, and `<=`.
+
+### 🎯 Example: Find the student with the highest mark.
+
+```sql
+SELECT name, mark
+FROM Students
+WHERE mark = (
+    SELECT MAX(mark)
+    FROM Students
+);
+```
+
+**Output:**
+
+| name | mark |
+|---|---|
+| Priya | 90 |
+
+💡 The inner query finds the highest mark, and the outer query finds the student who scored it.
+
+---
+
+## 🟢 4. Multiple-Row Subquery
+
+A multiple-row subquery returns more than one row. Operators such as `IN`, `ANY`, and `ALL` can be used with suitable subqueries.
+
+### 🎯 Example: Find students belonging to the CSE or IT departments.
+
+```sql
+SELECT name, department
+FROM Students
+WHERE department IN (
+    SELECT department
+    FROM Students
+    WHERE department IN ('CSE', 'IT')
+);
+```
+
+**Output:**
+
+| name | department |
+|---|---|
+| Arun | CSE |
+| Priya | IT |
+| Divya | CSE |
+| Ravi | IT |
+
+💡 The inner query returns department values, and the outer query selects students whose department matches those values.
+
+---
+
+## 🟡 5. Subquery with Comparison Operators
+
+### 🎯 Example: Find students who scored above the average mark.
+
+```sql
+SELECT name, mark
+FROM Students
+WHERE mark > (
+    SELECT AVG(mark)
+    FROM Students
+);
+```
+
+**Output:**
+
+| name | mark |
+|---|---|
+| Arun | 85 |
+| Priya | 90 |
+| Divya | 88 |
+
+💡 The average mark is 84.6. The outer query returns students whose marks are greater than 84.6.
+
+---
+
+## 🟣 6. Subquery with IN
+
+The `IN` operator checks whether a value matches any value returned by the subquery.
+
+### 🎯 Example: Find students studying in departments that have students scoring above 88.
+
+```sql
+SELECT name, department
+FROM Students
+WHERE department IN (
+    SELECT department
+    FROM Students
+    WHERE mark > 88
+);
+```
+
+**Output:**
+
+| name | department |
+|---|---|
+| Priya | IT |
+| Ravi | IT |
+
+💡 The inner query returns IT because Priya scored 90. The outer query retrieves all students from IT.
+
+---
+
+## 🩷 7. Correlated Subquery
+
+A **correlated subquery** depends on values from the outer query. It references a column from the outer query and is evaluated in relation to each outer row.
+
+### 🎯 Example: Find students who scored above their department's average.
+
+```sql
+SELECT name, department, mark
+FROM Students s1
+WHERE mark > (
+    SELECT AVG(s2.mark)
+    FROM Students s2
+    WHERE s2.department = s1.department
+);
+```
+
+**Output:**
+
+| name | department | mark |
+|---|---|---|
+| Divya | CSE | 88 |
+| Priya | IT | 90 |
+
+💡 The inner query calculates the average mark for the current student's department. The outer query returns students scoring above that average.
+
+---
+
+## 📊 8. Types of Subqueries — Quick Comparison
+
+| Type | Meaning |
+|---|---|
+| Single-row | Returns one row |
+| Multiple-row | Returns multiple rows |
+| Multiple-column | Returns multiple columns |
+| Correlated | Depends on the outer query |
+
+**Note:** These categories describe different aspects of subqueries; they are not mutually exclusive.
+
+---
+
+## 🎯 9. Important SQL Operators
+
+| Operator | Purpose |
+|---|---|
+| `IN` | Matches any value in a list or subquery result |
+| `EXISTS` | Checks whether the subquery returns at least one row |
+| `ANY` | Compares a value with at least one returned value |
+| `ALL` | Compares a value with every returned value |
+| `=` | Checks equality |
+| `>` | Checks whether a value is greater than another value |
+
+---
+
+## 🧠 10. Interview Questions & Answers
+
+**Q1. What is a subquery?**
+
+A subquery is a query written inside another SQL query. The outer query can use the result of the inner query.
+
+**Q2. What is the difference between a single-row and a multiple-row subquery?**
+
+A single-row subquery returns one row, while a multiple-row subquery returns more than one row.
+
+**Q3. What is a correlated subquery?**
+
+A correlated subquery refers to a column from the outer query and depends on the current outer row.
+
+**Q4. Can we use a subquery inside a WHERE clause?**
+
+Yes. A subquery can be used inside a WHERE clause to filter records based on another query's result.
+
+**Q5. What is the difference between IN and EXISTS?**
+
+IN checks whether a value matches a value in a set. EXISTS checks whether the subquery returns at least one row.
+
+**Q6. Can a subquery use aggregate functions?**
+
+Yes. Functions such as `MAX()`, `MIN()`, `AVG()`, and `COUNT()` can be used inside subqueries.
+
+---
+
+## ✍️ 11. Practice Exercises
+
+Try writing SQL queries to:
+
+1. Find the student who scored the highest mark.
+2. Find students who scored below the average mark.
+3. Find students who belong to the IT department.
+4. Find students who scored above 85.
+5. Find students who scored above their department's average.
+6. Find students whose marks are equal to the lowest mark.
+
+---
+
+## ✅ 12. Today's Learning Summary
+
+- Learned the meaning of SQL subqueries.
+- Practiced single-row and multiple-row subqueries.
+- Used `IN` and comparison operators.
+- Learned correlated subqueries.
+- Practiced aggregate functions inside subqueries.
+- Reviewed important interview questions.
+
+---
+
+## 🌱 My Learning Journey
+
+**Day 09 Completed! 🎉**
+
+Today, I learned how to use subqueries to solve SQL problems by using the results of one query inside another.
+
+📚 Learn → 💻 Practice → 🚀 Improve
+
+#SQL #MySQL #Subqueries #Database #DailyLearning #100DaysOfCode
