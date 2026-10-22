@@ -1,0 +1,246 @@
+
+# 🌸 SQL Daily Learning Journey — Day 10
+## 📝 Topic: SQL INSERT, UPDATE & DELETE
+
+📅 **Date:** 22 October 2026  
+🎯 **Goal:** Learn how to insert, update, and delete records in a database.
+
+---
+
+## 💡 1. Introduction
+
+SQL provides commands to manage records stored in database tables.
+
+Today, we will learn three important commands:
+
+- 🟢 `INSERT` — Adds new records.
+- 🟡 `UPDATE` — Modifies existing records.
+- 🔴 `DELETE` — Removes records.
+
+These commands belong to **DML (Data Manipulation Language)**.
+
+---
+
+## 🗂️ 2. Sample Table — Students
+
+| id | name | department | mark |
+|---|---|---|---|
+| 1 | Arun | CSE | 85 |
+| 2 | Priya | IT | 90 |
+| 3 | Kavin | ECE | 78 |
+
+We will use this table to practice SQL commands.
+
+---
+
+## 🟢 3. INSERT Command
+
+The `INSERT` command is used to add new records to a table.
+
+### 🎯 Example 1: Insert a new student
+
+```sql
+INSERT INTO Students (id, name, department, mark)
+VALUES (4, 'Divya', 'CSE', 88);
+```
+
+**Result:**
+
+A new record is added to the Students table.
+
+| id | name | department | mark |
+|---|---|---|---|
+| 4 | Divya | CSE | 88 |
+
+### 🎯 Example 2: Insert multiple records
+
+```sql
+INSERT INTO Students (id, name, department, mark)
+VALUES
+(5, 'Ravi', 'IT', 82),
+(6, 'Meena', 'ECE', 91);
+```
+
+💡 **Remember:** The values must match the specified columns in number and compatible data type.
+
+---
+
+## 🟡 4. UPDATE Command
+
+The `UPDATE` command modifies existing records in a table.
+
+### 🎯 Example 1: Update one student's mark
+
+```sql
+UPDATE Students
+SET mark = 95
+WHERE id = 2;
+```
+
+**Result:**
+
+Priya's mark changes from 90 to 95.
+
+### 🎯 Example 2: Update a department
+
+```sql
+UPDATE Students
+SET department = 'CSE'
+WHERE name = 'Kavin';
+```
+
+💡 **Important:** Always use a suitable `WHERE` condition when you want to update specific records.
+
+⚠️ Without `WHERE`, all rows in the table will be updated.
+
+---
+
+## 🔴 5. DELETE Command
+
+The `DELETE` command removes records from a table.
+
+### 🎯 Example 1: Delete one student's record
+
+```sql
+DELETE FROM Students
+WHERE id = 3;
+```
+
+**Result:**
+
+Kavin's record is removed from the Students table.
+
+### 🎯 Example 2: Delete students from a department
+
+```sql
+DELETE FROM Students
+WHERE department = 'ECE';
+```
+
+💡 This removes all records that match the specified condition.
+
+⚠️ **Warning:** Without `WHERE`, all rows will be deleted, but the table structure will remain.
+
+---
+
+## 📊 6. INSERT vs UPDATE vs DELETE
+
+| Command | Purpose | Example |
+|---|---|---|
+| INSERT | Adds records | Add a new student |
+| UPDATE | Modifies records | Change a student's mark |
+| DELETE | Removes records | Delete a student's record |
+
+---
+
+## 🧠 7. Important Difference: DELETE vs DROP vs TRUNCATE
+
+| Command | What it does |
+|---|---|
+| DELETE | Removes selected rows or all rows |
+| TRUNCATE | Removes all rows while keeping the table structure |
+| DROP | Removes the table itself, including its structure |
+
+💡 `DELETE` supports a `WHERE` clause. `TRUNCATE` and `DROP` do not use a `WHERE` clause.
+
+⚠️ Transaction and rollback behavior depends on the database system, storage engine, and transaction context.
+
+---
+
+## 🔎 8. Verify Changes Using SELECT
+
+After modifying records, use `SELECT` to check the data.
+
+```sql
+SELECT * FROM Students;
+```
+
+To view only students scoring above 85:
+
+```sql
+SELECT name, mark
+FROM Students
+WHERE mark > 85;
+```
+
+💡 `SELECT` retrieves data; it does not modify the records.
+
+---
+
+## 🏪 9. Real-Time Example
+
+Imagine a college student management system.
+
+- `INSERT`: Register a new student.
+- `UPDATE`: Change a student's department or mark.
+- `DELETE`: Remove a student record when appropriate.
+
+These commands are useful in college management systems, banking applications, shopping websites, and employee databases.
+
+---
+
+## 🎯 10. Interview Questions & Answers
+
+**Q1. What is INSERT in SQL?**
+
+INSERT is used to add new records to a table.
+
+**Q2. What is UPDATE in SQL?**
+
+UPDATE is used to modify existing records in a table.
+
+**Q3. What is DELETE in SQL?**
+
+DELETE removes records from a table. We can use WHERE to remove specific records.
+
+**Q4. What happens if we use UPDATE without WHERE?**
+
+All rows in the table will be updated.
+
+**Q5. What happens if we use DELETE without WHERE?**
+
+All rows will be deleted, but the table structure will remain.
+
+**Q6. What is the difference between DELETE and DROP?**
+
+DELETE removes rows from a table, whereas DROP removes the table structure and the table itself.
+
+**Q7. What is DML?**
+
+DML stands for Data Manipulation Language. It includes commands such as INSERT, UPDATE, and DELETE.
+
+---
+
+## ✍️ 11. Practice Exercises
+
+Try writing SQL queries to:
+
+1. Insert a new student named Anu from the CSE department with 92 marks.
+2. Update Arun's mark to 89.
+3. Change Priya's department to CSE.
+4. Delete the student whose ID is 6.
+5. Display all students after updating the records.
+6. Delete students who scored below 40.
+
+---
+
+## ✅ 12. Today's Learning Summary
+
+- Learned how to add records using INSERT.
+- Practiced modifying records using UPDATE.
+- Learned how to remove records using DELETE.
+- Understood the importance of WHERE.
+- Compared DELETE, TRUNCATE, and DROP.
+- Practiced SQL interview questions.
+
+---
+
+## 🌱 My Learning Journey
+
+**Day 10 Completed! 🎉**
+
+Today, I learned how to insert new records, update existing data, and delete records using SQL commands.
+
+📚 Learn → 💻 Practice → 🚀 Improve
+
+#SQL #MySQL #Insert #Update #Delete #Database #DailyLearning #100DaysOfCode
